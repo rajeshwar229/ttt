@@ -245,8 +245,8 @@ DOM.box.on('click', function() {
             }
 
             if(gameSettings.systemTurn){
-                // If win or defend not possible, trigger click on the first empty diagonal box
-                $emptyDiagonalBoxes.length && $emptyDiagonalBoxes[0].click();
+                // If win or defend not possible, trigger click on the first empty diagonal/empty box
+                $emptyDiagonalBoxes.length ? $emptyDiagonalBoxes[0].click() : $emptyBoxes[0].click();
                 //Always make system turn false after each click triggered by system
                 gameSettings.systemTurn = false;
                 return false;
