@@ -102,15 +102,16 @@ const reset = function(won){
     let timeOut = 1000;
     let type = gameSettings.type;
     if(won === true){
-        DOM.result.text(`Player ${gameSettings.chance? 'X': 'O'} won, New Game started!`);
+        DOM.result.text(`Player ${gameSettings.chance? 'X': 'O'} won, New ${type} Game started!`);
         gameSettings.winScoreLocalStorage(`ticTacToe${type}Player${gameSettings.chance? 'X': 'O'}`);
     }
     // When 1 or 2 player button is clicked, reset values immediately
     else if(won === 'new'){
         timeOut = 1;
+        DOM.result.text(`New ${type} Game started!`);
     }
     else{
-        DOM.result.text(`Game is Draw, New Game started!`);
+        DOM.result.text(`Game is Draw, New ${type} Game started!`);
         DOM.box.addClass('bg-warning');
         gameSettings.winScoreLocalStorage(`ticTacToeTie${type}`);
     }
