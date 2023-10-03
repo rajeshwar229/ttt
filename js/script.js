@@ -5,6 +5,7 @@ $(document).ready(function(){
     twoPlayer : false,
     systemTurn : false,
     type: this.twoPlayer?'TwoPlayer':'OnePlayer',
+    level : 'easy',
     winScoreLocalStorage : function(key) {
         localStorage && localStorage[key] ? localStorage[key] = +localStorage[key]+1 : localStorage[key] = 1;
     },
@@ -128,6 +129,9 @@ const reset = function(won){
 // Adjusting the height same as width of boxes on page load
 DOM.box.height(DOM.box.width());
 
+$('[name="difficulty"]').on('change', function(){
+    gameSettings.level = this.value;
+})
 // Adjusting the height same as width on window resize
 DOM.window.on('resize', function(){
     DOM.box.height(DOM.box.width());
@@ -235,20 +239,25 @@ DOM.box.on('click', function() {
         // When 3,5,7 moves are made, use 'counterNextWinMove' method for next best move
         else if( gameSettings.chances === 3 || gameSettings.chances === 5 || gameSettings.chances === 7){
             
-            if(gameSettings.chances === 5 || gameSettings.chances === 7){
+            if((gameSettings.chances === 5 || gameSettings.chances === 7) && gameSettings.level === 'hard'){
                 //First try to win, When chances are 5 or 7, then there are chances of consecutive 'O'
                 counterNextWinMove('OO');
             }
 
-            if(gameSettings.systemTurn){
+            if(gameSettings.systemTurn && (gameSettings.level === 'medium' || gameSettings.level === 'hard')){
                 //Next try to defend
                 counterNextWinMove('XX');
             }
 
-            if(gameSettings.systemTurn){
+            if(gameSettings.systemTurn && (gameSettings.level === 'medium' || gameSettings.level === 'hard')){
                 // If win or defend not possible, trigger click on the first empty diagonal/empty box
                 $emptyDiagonalBoxes.length ? $emptyDiagonalBoxes[0].click() : $emptyBoxes[0].click();
                 //Always make system turn false after each click triggered by system
+                gameSettings.systemTurn = false;
+                return false;
+            }
+            if(gameSettings.systemTurn && gameSettings.level === 'easy'){
+                $emptyBoxes[Math.floor(Math.random()*$emptyBoxes.length)].click();
                 gameSettings.systemTurn = false;
                 return false;
             }
