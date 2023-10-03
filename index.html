@@ -18,13 +18,25 @@
         <h1 class="heading game-title mt-2 mb-0 d-none d-md-block">Tic Tac Toe <img class="heading-img" src="images/tic-tac-toe.gif" /></h1>
         <h4 class="heading game-title mt-1 mb-0 d-block d-md-none">Tic Tac Toe <img class="heading-img" src="images/tic-tac-toe.gif" /></h4>
     </div>
-    </div>
+    </div> 
   <div class="container">
     <div class="row setup">
-        <div class="col-12 col-md-8 col-lg-6 col-xl-4 mx-auto text-center">
+        <div class="col-12 col-md-8 col-lg-6 col-xl-5 mx-auto text-center">
             <form class="d-inline-flex flex-row">
                 <button class="one-player-btn mx-2 btn btn-dark font-weight-bold" data-twoplayer="false" autofocus>1 Player</button>
                 <button class="two-player-btn mx-2 btn btn-dark font-weight-bold" data-twoplayer="true" >2 Player</button>
+
+                <div class="btn-group btn-group-toggle align-items-center" data-toggle="buttons">
+                    <label class="btn btn-secondary">
+                      <input type="radio" name="difficulty" id="easy" value="easy" autocomplete="off" > Easy
+                    </label>
+                    <label class="btn btn-warning">
+                      <input type="radio" name="difficulty" id="medium" value="medium" autocomplete="off"> Medium
+                    </label>
+                    <label class="btn btn-danger">
+                      <input type="radio" name="difficulty" id="hard" value="hard" autocomplete="off"> Hard
+                    </label>
+                  </div>
             </form>
         </div>
     </div>
@@ -66,6 +78,7 @@
                     <div data-score="0">0</div>
                 </div>
             </div>
+            <a class="more-games-link mt-2 btn btn-dark font-weight-bold" href="https://rajeshwar229.github.io/games/">More Games</a>
         </div>
       </div>
     </div>
