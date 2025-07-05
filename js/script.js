@@ -32,6 +32,7 @@ let DOM = {
     gameTieScore : $('.game-tie [data-score]'),
     result : $('.result'),
     oneTwoPlayerBtn : $('.one-player-btn, .two-player-btn'),
+    difficultyLevel : $('.difficulty-label')
 
     // Returns current active player as per the chance
     dynamicPlayer : function(chance){
@@ -131,7 +132,9 @@ DOM.box.height(DOM.box.width());
 
 $('[name="difficulty"]').on('change', function(){
     gameSettings.level = this.value;
-})
+    DOM.difficultyLevel.removeClass('selected-difficulty');
+    $(this).parentElement.addClass('selected-difficulty');
+});
 // Adjusting the height same as width on window resize
 DOM.window.on('resize', function(){
     DOM.box.height(DOM.box.width());
