@@ -114,7 +114,12 @@ const reset = function(won){
     // When 1 or 2 player button is clicked, reset values immediately
     else if(won === 'new'){
         timeOut = 1;
-        DOM.result.text(`New ${type} Game started! ${type === 'OnePlayer' ? Difficulty: ${gameSettings.level} : ''`);
+        if({type === 'OnePlayer'){
+            DOM.result.text(`New ${type} Game started! Difficulty: ${gameSettings.level}`);
+        }
+        else {
+            DOM.result.text(`New ${type} Game started!`);
+        }
     }
     else{
         DOM.result.text(`Game is Draw, New ${type} Game started!`);
