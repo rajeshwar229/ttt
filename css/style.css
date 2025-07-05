@@ -36,4 +36,10 @@ body{
 .heading-img{
     width:50px;
 }
+
+.selected-difficulty{
+    border: 1px solid;
+    font-weight: bold;
+    box-shadow: 0 0 5px;
+}
 /********* END OF STYLES *********/
