@@ -32,7 +32,7 @@ let DOM = {
     gameTieScore : $('.game-tie [data-score]'),
     result : $('.result'),
     oneTwoPlayerBtn : $('.one-player-btn, .two-player-btn'),
-    difficultyLevel : $('.difficulty-label')
+    difficultyLevel : $('.difficulty-label'),
 
     // Returns current active player as per the chance
     dynamicPlayer : function(chance){
