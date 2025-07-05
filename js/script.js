@@ -37,6 +37,10 @@ let DOM = {
     // Returns current active player as per the chance
     dynamicPlayer : function(chance){
         return $(`.score .score-container .player-${chance? 'X': 'O'}`);
+    },
+    // Returns current selected difficulty
+    difficultySelected: function(difficulty){
+        return $(`.difficulty-label[data-difficulty=${difficulty}]`);
     }
 }
 
@@ -133,7 +137,7 @@ DOM.box.height(DOM.box.width());
 $('[name="difficulty"]').on('change', function(){
     gameSettings.level = this.value;
     DOM.difficultyLevel.removeClass('selected-difficulty');
-    $(this).parentElement.addClass('selected-difficulty');
+    DOM.difficultySelected(this.value).addClass('selected-difficulty');
 });
 // Adjusting the height same as width on window resize
 DOM.window.on('resize', function(){
